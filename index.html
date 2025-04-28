@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random NFL Team Generator</title>
+    <title>Random NCAA School Selector</title>
     <style>
         /* Full-page background image */
         body {
@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
             height: 100vh; /* Makes the body full viewport height */
-            background-image: url('nfl_field.jpg'); /* Replace with your image path */
+            background-image: url('images/ncaa_football_field.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -53,8 +53,8 @@
     </style>
 </head>
 <body>
-    <h1>Random NFL Team Generator</h1>
-    <p>Click the button to select a random NFL Team.</p>
+    <h1>Random NCAA School Generator</h1>
+    <p>Click the button to select a random NCAA School.</p>
     <button onclick="generateRandomTeam()">Select</button>
     <div id="image-container"></div>
     <script>
@@ -108,7 +108,7 @@
 
             const interval = setInterval(() => {
             console.log(`Displaying image index: ${index}, path: ${teamImages[index]}`);
-            imageContainer.innerHTML = `<img src="${teamImages[index]}" alt="NFL Team">`;
+            imageContainer.innerHTML = `<img src="${teamImages[index]}" alt="NCAA School">`;
             index = (index + 1) % teamImages.length; // Loop through images sequentially
             cycle += animationInterval;
 
@@ -116,7 +116,7 @@
                 clearInterval(interval);
                 const finalIndex = Math.floor(Math.random() * teamImages.length);
                 console.log(`Final team index: ${finalIndex}, path: ${teamImages[finalIndex]}`);
-                imageContainer.innerHTML = `<img src="${teamImages[finalIndex]}" alt="NFL Team">`;
+                imageContainer.innerHTML = `<img src="${teamImages[finalIndex]}" alt="NCAA School">`;
             }
         }, animationInterval);
     }
