@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random NFL Team Generator</title>
+    <style>
+        /* Full-page background image */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Makes the body full viewport height */
+            background-image: url('nfl_field.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative; /* To position elements relative to this */
+        }
+
+        /* Styling for text and buttons */
+        h1, p, button {
+            color: white; /* Text color */
+            text-shadow: 2px 2px 4px black; /* Black border effect */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            z-index: 10; /* Keeps the button above the background */
+            position: relative; /* Ensures button is in the foreground */
+        }
+
+        /* Styling for images */
+        img {
+            margin-top: 20px;
+            max-width: 300px;
+            height: auto;
+            z-index: 10; /* Ensures images are above the background */
+            position: relative; /* Places images in the foreground */
+        }
+
+        /* Center content vertically and horizontally */
+        #image-container {
+            position: relative;
+            z-index: 10; /* Ensures it sits above the background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 150px); /* Centers the image container */
+        }
+    </style>
+</head>
+<body>
+    <h1>Random NFL Team Generator</h1>
+    <p>Click the button to select a random NFL Team.</p>
+    <button onclick="generateRandomTeam()">Select</button>
+    <div id="image-container"></div>
+    <script>
+        function generateRandomTeam() {
+            console.log("Function triggered"); // Verify the function is running
+
+            const teamImages = [
+                "team_images/49ers.png",
+                "team_images/bears.png",
+                "team_images/bengals.png",
+                "team_images/bills.png",
+                "team_images/broncos.png",
+                "team_images/browns.png",
+                "team_images/buccaneers.png",
+                "team_images/cardinals.png",
+                "team_images/chargers.png",
+                "team_images/chiefs.png",
+                "team_images/colts.png",
+                "team_images/commanders.png",
+                "team_images/cowboys.png",
+                "team_images/dolphins.png",
+                "team_images/eagles.png",
+                "team_images/falcons.png",
+                "team_images/giants.png",
+                "team_images/jaguars.png",
+                "team_images/jets.png",
+                "team_images/lions.png",
+                "team_images/packers.png",
+                "team_images/panthers.png",
+                "team_images/patriots.png",
+                "team_images/raiders.png",
+                "team_images/rams.png",
+                "team_images/ravens.png",
+                "team_images/saints.png",
+                "team_images/seahawks.png",
+                "team_images/steelers.png",
+                "team_images/texans.png",
+                "team_images/titans.png",
+                "team_images/vikings.png",
+            ];
+    
+            console.log("Team images array:", teamImages); // Verify image paths are loaded
+
+            const imageContainer = document.getElementById("image-container");
+            let index = 0;
+            const animationDuration = 3000;
+            const animationInterval = 100;
+            let cycle = 0;
+
+            console.log("Starting animation");
+
+            const interval = setInterval(() => {
+            console.log(`Displaying image index: ${index}, path: ${teamImages[index]}`);
+            imageContainer.innerHTML = `<img src="${teamImages[index]}" alt="NFL Team">`;
+            index = (index + 1) % teamImages.length; // Loop through images sequentially
+            cycle += animationInterval;
+
+            if (cycle >= animationDuration) {
+                clearInterval(interval);
+                const finalIndex = Math.floor(Math.random() * teamImages.length);
+                console.log(`Final team index: ${finalIndex}, path: ${teamImages[finalIndex]}`);
+                imageContainer.innerHTML = `<img src="${teamImages[finalIndex]}" alt="NFL Team">`;
+            }
+        }, animationInterval);
+    }
+    </script>
+</body>
+</html>
